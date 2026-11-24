@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti, Carenk ✨</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body {
+      background: linear-gradient(135deg, #fdfbfb 0%, #f3e8ff 45%, #e0f2fe 100%);
+      color: #334155;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Partículas suaves flotantes */
+    .luz {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(192, 132, 252, 0.15) 70%, transparent 100%);
+      pointer-events: none;
+      animation: flotar 12s infinite ease-in-out;
+      z-index: 0;
+    }
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.08); }
+    }
+
+    .contenedor {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Encabezado cálido */
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+    }
+    .etiqueta {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.85);
+      color: #7e22ce;
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(126, 34, 206, 0.08);
+    }
+    header h1 {
+      font-size: clamp(1.9rem, 5vw, 2.7rem);
+      color: #1e293b;
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
+    }
+    header h1 span {
+      color: #7e22ce;
+    }
+    header p {
+      color: #475569;
+      font-size: 1.08rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Tarjetas generales */
+    .tarjeta {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      padding: 2rem 1.6rem;
+      margin-top: 1.6rem;
+      box-shadow: 0 12px 30px rgba(30, 41, 59, 0.06);
+      text-align: center;
+    }
+    .tarjeta h2 {
+      font-size: 1.3rem;
+      color: #3b0764;
+      margin-bottom: 0.6rem;
+    }
+    .tarjeta p.sub {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 1.3rem;
+    }
+
+    /* Generador de frases de ánimo */
+    .caja-frase {
+      background: linear-gradient(135deg, #faf5ff 0%, #f0f9ff 100%);
+      border: 1px solid #e9d5ff;
+      border-radius: 18px;
+      padding: 1.5rem;
+      min-height: 105px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: #4c1d95;
+      margin-bottom: 1.2rem;
+      transition: opacity 0.3s ease;
+    }
+    .btn-principal {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-principal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    /* Círculo de respiración guiada */
+    .respiracion-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .circulo-respira {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #bae6fd 0%, #c4b5fd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e1b4b;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+      animation: respirar 8s infinite ease-in-out;
+    }
+    @keyframes respirar {
+      0%, 100% { transform: scale(0.85); }
+      50% { transform: scale(1.18); }
+    }
+
+    /* Lista de pequeños pasos sin presión */
+    .lista-pasos {
+      text-align: left;
+      max-width: 440px;
+      margin: 0 auto;
+      list-style: none;
+    }
+    .lista-pasos li {
+      background: #f8fafc;
+      margin-bottom: 0.65rem;
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lista-pasos li:hover { background: #f1f5f9; }
+    .lista-pasos li.hecho {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #166534;
+      text-decoration: line-through;
+    }
+
+    /* Carta personal */
+    .carta-texto {
+      color: #334155;
+      font-size: 1.03rem;
+      text-align: left;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      padding: 1.4rem;
+      border-radius: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Luces suaves de fondo -->
+  <div class="luz" style="width: 240px; height: 240px; top: 8%; left: 5%;"></div>
+  <div class="luz" style="width: 300px; height: 300px; bottom: 10%; right: 5%; animation-delay: 3s;"></div>
+
+  <div class="contenedor">
+    <header>
+      <span class="etiqueta">✨ Hice este rincón pensando en ti, Carenk</span>
+      <h1><span>Carenk</span>, no tienes que tener todas las respuestas hoy</h1>
+      <p>A veces el ánimo baja sin avisar y sin una razón clara. Está bien sentirse así; no tienes que fingir que todo está perfecto.</p>
+    </header>
+
+    <!-- 1. FRASCO DE PALABRAS DE ÁNIMO -->
+    <section class="tarjeta">
+      <h2>💌 Un recordatorio para este momento</h2>
+      <p class="sub">Presiona el botón cada vez que necesites leer algo bonito.</p>
+      <div class="caja-frase" id="frase-texto">
+        "Incluso los días grises pasan, Carenk, y tú no tienes que cargar con todo tú sola."
+      </div>
+      <button class="btn-principal" onclick="nuevaFrase()">✨ Leer otro mensaje</button>
+    </section>
+
+    <!-- 2. EJERCICIO DE RESPIRACIÓN -->
+    <section class="tarjeta">
+      <h2>🌬️ Tómate 30 segundos para soltar tensión</h2>
+      <p class="sub">Sigue el movimiento del círculo: toma aire cuando crece y suéltalo despacio cuando se hace pequeño.</p>
+      <div class="respiracion-wrap">
+        <div class="circulo-respira" id="texto-respira">Respira...</div>
+      </div>
+    </section>
+
+    <!-- 3. PEQUEÑAS COSAS SIN PRESIÓN -->
+    <section class="tarjeta">
+      <h2>🌿 Pasos chiquitos para hoy (sin obligación)</h2>
+      <p class="sub">Toca los que te provoque hacer, a tu propio ritmo:</p>
+      <ul class="lista-pasos">
+        <li onclick="this.classList.toggle('hecho')">💧 Tomar un vaso de agua fresca</li>
+        <li onclick="this.classList.toggle('hecho')">🎧 Escuchar una canción que te dé paz</li>
+        <li onclick="this.classList.toggle('hecho')">🪟 Abrir la ventana y sentir un poco de aire</li>
+        <li onclick="this.classList.toggle('hecho')">🛋️ Descansar sin sentirte culpable por no hacer nada</li>
+      </ul>
+    </section>
+
+    <!-- 4. NOTA PERSONAL -->
+    <section class="tarjeta">
+      <h2>🤍 Aquí estoy contigo, Carenk</h2>
+      <div class="carta-texto">
+        Carenk, quise hacerte esta pequeña página porque me importas mucho. No importa si hoy no sabes explicar qué te pasa o por qué te sientes así: si quieres hablar, distraerte viendo algo, salir a caminar en silencio o simplemente saber que alguien te acompaña, cuenta conmigo siempre.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const frases = [
+      "Carenk, no tienes que saber por qué te sientes triste para merecer un abrazo y un descanso.",
+      "Hoy basta con que hagas lo que puedas; con eso ya es más que suficiente.",
+      "Tus emociones son válidas, incluso cuando no tienen una explicación lógica.",
+      "Eres una persona valiosa, querida y mucho más fuerte de lo que hoy sientes, Carenk.",
+      "No estás sola en esto. Cuando quieras compañía, aquí estoy.",
+      "Respira hondo, Carenk: este sentimiento es temporal, no es para siempre.",
+      "Está bien pausar, apagar el ruido del mundo un rato y cuidarte."
+    ];
+
+    let indiceActual = 0;
+
+    function nuevaFrase() {
+      const caja = document.getElementById("frase-texto");
+      caja.style.opacity = 0;
+      setTimeout(() => {
+        indiceActual = (indiceActual + 1) % frases.length;
+        caja.textContent = `"${frases[indiceActual]}"`;
+        caja.style.opacity = 1;
+      }, 250);
+    }
+
+    // Texto sincronizado con la animación de 8 segundos
+    const textoRespira = document.getElementById("texto-respira");
+    setInterval(() => {
+      textoRespira.textContent = "Inhala...";
+      setTimeout(() => {
+        textoRespira.textContent = "Exhala...";
+      }, 4000);
+    }, 8000);
+    textoRespira.textContent = "Inhala...";
+    setTimeout(() => { textoRespira.textContent = "Exhala..."; }, 4000);
+  </script>
+
+</body>
+</html>
